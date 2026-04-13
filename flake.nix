@@ -9,12 +9,21 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, lib, ... }: {
+
+      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "vscode"
+      ];
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.vim
+        [ pkgs.vim pkgs.vscode
         ];
+
+      system.activationScripts.postActivation.text = ''
+        ln --symbolic --force --no-dereference /Users/amaury.palomino/work/setup /etc/nix-darwin
+      '';
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
