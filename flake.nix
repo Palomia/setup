@@ -4,11 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master"; 
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-etienne = {
-      url = "github:etrobert/setup?dir=nix"; 
+      url = "github:etrobert/setup?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -39,9 +39,10 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
 
-      programs.direnv.enable = true;
-
-
+      programs.direnv = {
+        enable = true;
+        settings.global.hide_env_diff = true;
+      };
     };
   in
   {
