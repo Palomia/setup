@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-etienne = {
-      url = "github:etrobert/setup?dir=nix";
+      url = "github:etrobert/setup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
