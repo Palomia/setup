@@ -35,6 +35,8 @@
           nix.settings.experimental-features = "nix-command flakes";
           nix.enable = false;
 
+          security.pam.services.sudo_local.touchIdAuth = true;
+
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
 
