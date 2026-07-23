@@ -29,12 +29,14 @@
           environment.systemPackages =
             with pkgs;
             [
+              bat
               gh
               fzf
               claude-code
               vim
               neovim
               tmux
+              ripgrep
               ghostty-bin.terminfo
             ]
             ++ (with nix-etienne.packages.aarch64-darwin; [
