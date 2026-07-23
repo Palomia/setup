@@ -29,7 +29,8 @@
           environment.systemPackages =
             with pkgs;
             [
-	      claude-code
+              gh
+              claude-code
               git
               vim
               neovim
@@ -58,7 +59,7 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
-	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
+          nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
 
           programs.direnv = {
             enable = true;
