@@ -30,6 +30,7 @@
             with pkgs;
             [
               gh
+              fzf
               claude-code
               git
               vim
