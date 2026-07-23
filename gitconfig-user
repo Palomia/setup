@@ -1,0 +1,13 @@
+# vim: ft=gitconfig
+# Local user gitconfig consumed by nix-etienne's git-wrapped (userConfig
+# override in flake.nix). Only holds settings NOT already provided by
+# etrobert's gitconfig-system (aliases, whitespace, merge, push.autoSetupRemote,
+# init/pull/branch/log defaults, status short+branch, etc.).
+
+[user]
+  email = amaury.palomino@outlook.com
+  name = Palomia
+[core]
+  editor = code --wait
+[credential]
+  helper = osxkeychain

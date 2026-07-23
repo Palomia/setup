@@ -32,7 +32,6 @@
               gh
               fzf
               claude-code
-              git
               vim
               neovim
               tmux
@@ -40,6 +39,7 @@
             ]
             ++ (with nix-etienne.packages.aarch64-darwin; [
               batr
+              (git-wrapped.override { userConfig = ./gitconfig-user; })
             ]);
 
           # Necessary for using flakes on this system.
