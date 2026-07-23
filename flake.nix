@@ -26,10 +26,16 @@
         {
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
-          environment.systemPackages = [
-            pkgs.vim
-            nix-etienne.packages.aarch64-darwin.batr
-          ];
+          environment.systemPackages =
+            with pkgs;
+            [
+              git
+              vim
+              neovim
+            ]
+            ++ [
+              nix-etienne.packages.aarch64-darwin.batr
+            ];
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
@@ -62,5 +68,7 @@
       darwinConfigurations."ACLKMVTH44411" = nix-darwin.lib.darwinSystem {
         modules = [ configuration ];
       };
+
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
     };
 }
