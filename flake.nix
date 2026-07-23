@@ -32,10 +32,12 @@
               git
               vim
               neovim
+              tmux
+              ghostty-bin.terminfo
             ]
-            ++ [
-              nix-etienne.packages.aarch64-darwin.batr
-            ];
+            ++ (with nix-etienne.packages.aarch64-darwin; [
+              batr
+            ]);
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
