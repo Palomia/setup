@@ -22,13 +22,14 @@
     }:
     let
       configuration =
-        { pkgs, ... }:
+        { pkgs, lib, ... }:
         {
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           environment.systemPackages =
             with pkgs;
             [
+	      claude-code
               git
               vim
               neovim
@@ -57,6 +58,7 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
+	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "claude-code" ];
 
           programs.direnv = {
             enable = true;
